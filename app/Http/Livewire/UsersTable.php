@@ -26,10 +26,13 @@ class UsersTable extends Component
     ];
 
     public function onUserUpdated(){
+        session()->flash('success', "L'utilisateur a été bien mis à jour.");
         $this->reset('editId');
     }
     public function deleteUsers(array $ids){
         User::destroy($ids);
+        session()->flash('success', "Les utilisateurs ont  été bien mis à jour.");
+
         $this->selection = [];
     }
 
