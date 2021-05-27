@@ -21,7 +21,7 @@
         <thead>
         <tr>
             <th></th>
-            <x-table-header :direction="$orderDirection" name="name" :field="$orderField">Name</x-table-header>
+            <x-table-header :direction="$orderDirection" name="name" :field="$orderField">Nom</x-table-header>
             <x-table-header :direction="$orderDirection" name="job" :field="$orderField">Title</x-table-header>
             <x-table-header :direction="$orderDirection" name="active" :field="$orderField">Status</x-table-header>
             <x-table-header :direction="$orderDirection" name="role" :field="$orderField">Rôle</x-table-header>
