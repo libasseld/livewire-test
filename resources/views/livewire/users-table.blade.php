@@ -17,7 +17,7 @@
         </p>
     </div>
     <button class="button is-danger" x-show="selection.length >0 " x-on:click="$wire.deleteUsers(selection)">Supprimer</button>
-    <table  class="table is-fullwidth has-text-gray">
+    <table  class="table is-fullwidth has-text-black">
         <thead>
         <tr>
             <th></th>
