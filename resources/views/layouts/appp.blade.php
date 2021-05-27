@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <style>
         html{
-            background: #e3e4ec;
+            background: #e2e8f0;
         }
     </style>
     @livewireStyles
