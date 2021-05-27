@@ -15,8 +15,18 @@ class UsersTable extends Component
     public string $orderDirection = "ASC";
     public int $editId = 0;
     protected $queryString = [
-        'search' => ['except' => '']
+        'search' => ['except' => ''],
+        'orderField' => ['except' => 'name'],
+        'orderDirection' => ['except' => 'ASC']
     ];
+    protected $listeners = [
+        'userUpdated' => 'onUserUpdated'
+    ];
+
+    public function onUserUpdated(){
+        $this->reset('editId');
+    }
+
     public function paginationView(){
         return 'livewire.pagination';
     }
@@ -34,12 +44,17 @@ class UsersTable extends Component
         }
     }
 
+    public function updating($name, $value){
+        if ($name === 'search'){
+            $this->resetPage();
+        }
+    }
     public function render()
     {
         return view('livewire.users-table', [
             'users' => User::where('name', 'LIKE',"%{$this->search}%")
                 ->orderBy($this->orderField, $this->orderDirection)
-                ->paginate(15)
+                ->paginate(5)
         ]);
     }
 }
