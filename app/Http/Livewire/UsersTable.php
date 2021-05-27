@@ -14,6 +14,8 @@ class UsersTable extends Component
     public string $orderField = "name";
     public string $orderDirection = "ASC";
     public int $editId = 0;
+    public array $selection  = [];
+
     protected $queryString = [
         'search' => ['except' => ''],
         'orderField' => ['except' => 'name'],
@@ -25,6 +27,10 @@ class UsersTable extends Component
 
     public function onUserUpdated(){
         $this->reset('editId');
+    }
+    public function deleteUsers(array $ids){
+        User::destroy($ids);
+        $this->selection = [];
     }
 
     public function paginationView(){

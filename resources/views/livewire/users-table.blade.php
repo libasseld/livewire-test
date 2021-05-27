@@ -1,4 +1,7 @@
-<div>
+<div x-data="{selection: @entangle('selection').defer}">
+    @dump($selection)
+
+    <span x-html="JSON.stringify(selection)"></span>
     <div class="field">
         <p class="control has-icons-left has-icons-right ">
             <input class="input" type="email" wire:model.debounce.500ms="search" placeholder="rechercher un membre">
@@ -7,9 +10,11 @@
             </span>
         </p>
     </div>
+    <button class="button is-danger" x-show="selection.length >0 " x-on:click="$wire.deleteUsers(selection)">Supprimer</button>
     <table  class="table is-fullwidth has-text-gray">
         <thead>
         <tr>
+            <th></th>
             <x-table-header :direction="$orderDirection" name="name" :field="$orderField">Name</x-table-header>
             <x-table-header :direction="$orderDirection" name="job" :field="$orderField">Title</x-table-header>
             <x-table-header :direction="$orderDirection" name="active" :field="$orderField">Status</x-table-header>
@@ -20,6 +25,9 @@
         <tbody>
         @foreach($users as $user)
             <tr>
+                <td>
+                    <input type="checkbox" x-model="selection" value="{{ $user->id }}" />
+                </td>
                 <td>
                     <div class="is-flex">
                         <figure class="image is-48x48">
