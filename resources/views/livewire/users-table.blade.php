@@ -1,6 +1,12 @@
 <div x-data="{selection: @entangle('selection').defer}">
-    @dump($selection)
 
+    @if(session()->has('success'))
+        <article class="message is-primary">
+            <div class="message-body">
+                {{session('success')}}
+            </div>
+        </article>
+    @endif
     <span x-html="JSON.stringify(selection)"></span>
     <div class="field">
         <p class="control has-icons-left has-icons-right ">
